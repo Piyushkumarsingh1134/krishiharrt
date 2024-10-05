@@ -5,7 +5,8 @@ import { Box, Typography } from "@mui/material";
 import { add } from '../../redux/Cartslice';
 import { useDispatch, useSelector } from 'react-redux';
 import { STATUSES, fetchproducts} from '../../redux/Productslice';
- import Slider from "./slide"; // Ensure the file name matches with 'Slide.js'
+import Slider from "./slide"; // Ensure the file name matches with 'Slide.js'
+import Footer from "../Footer/Footer";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -33,13 +34,20 @@ const Home = () => {
             
             <Box>
                 <Banner />
-                <Slider products={products} />
-                <Slider products={products} />
-                <Slider products={products} />
+             
+                <Slider products={products} title="Deal of the Day" showDealBanner={true} />
+                
+              
+                <Slider products={products} title="For You" />
+                
+              
+                <Slider products={products} title="Trending" />
             </Box>
+            <Footer/>
         </Fragment>
     );
 };
 
 export default Home;
+
 

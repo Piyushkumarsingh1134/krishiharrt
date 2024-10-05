@@ -1,37 +1,41 @@
-import { Box, Button, Typography, styled } from "@mui/material";
+import { Link } from 'react-router-dom';
 import { navData } from '../../constants/data';
-
-const StyledButton = styled(Button)({
-    display: 'flex',
-    flexDirection: 'column', // Stack the image and text vertically
-    alignItems: 'center',    // Center the content
-    padding: '8px',
-    textTransform: 'none',   // Disable uppercase transformation
-    '& img': {
-        width: '50px',        // Set the image width
-        height: '50px',       // Set the image height
-        marginBottom: '2px',  // Reduce the space between image and text
-    },
-    '& p': {
-        margin: 0,            // Remove default margin
-        fontSize: '14px',     // Set font size
-        color: '#333',        // Set text color
-    }
-});
 
 const Navbar = () => {
     return (
-        <Box display="flex" justifyContent="space-around">
-            {navData.map((item, index) => (
-                <StyledButton key={index}>
-                    <img src={item.url} alt={item.text} />
-                    <p>{item.text}</p>
-                </StyledButton>
-            ))}
-        </Box>
+        <div className="flex justify-around">
+            <Link to='/Seed'>
+                <div className="flex flex-col items-center p-2">
+                    <img src={navData[0].url} alt={navData[0].text} className="w-12 h-12 mb-1" />
+                    <p className="text-sm text-gray-800">{navData[0].text}</p>
+                </div>
+            </Link>
+            <Link to='/Fertilizers'>
+                <div className="flex flex-col items-center p-2">
+                    <img src={navData[1].url} alt={navData[1].text} className="w-12 h-12 mb-1" />
+                    <p className="text-sm text-gray-800">{navData[1].text}</p>
+                </div>
+            </Link>
+            
+            <Link to={navData[2].link}>
+                <div className="flex flex-col items-center p-2">
+                    <img src={navData[2].url} alt={navData[2].text} className="w-12 h-12 mb-1" />
+                    <p className="text-sm text-gray-800">{navData[2].text}</p>
+                </div>
+            </Link>
+
+            <Link to={navData[3].link}>
+                <div className="flex flex-col items-center p-2">
+                    <img src={navData[3].url} alt={navData[3].text} className="w-12 h-12 mb-1" />
+                    <p className="text-sm text-gray-800">{navData[3].text}</p>
+                </div>
+            </Link>
+    </div>
     );
-}
+};
 
 export default Navbar;
+
+
 
 

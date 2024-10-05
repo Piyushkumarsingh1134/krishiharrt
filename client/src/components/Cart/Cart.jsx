@@ -6,6 +6,7 @@ import {
   decreaseQuantity,
   clearCart,
 } from '../../redux/Cartslice';
+import Buy from './Buy';  // Import the Buy component
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Cart = () => {
   );
 
   return (
-    <div style={{ padding: '20px'  }}>
+    <div style={{ padding: '20px' }}>
       <h3>Cart Page</h3>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -80,6 +81,9 @@ const Cart = () => {
             >
               Clear Cart
             </button>
+
+            {/* Use the Buy component and pass totalPrice and cartItems as props */}
+            <Buy totalPrice={totalPrice} cartItems={cartItems} /> 
           </div>
         </>
       )}
@@ -88,6 +92,7 @@ const Cart = () => {
 };
 
 export default Cart;
+
 
 
 

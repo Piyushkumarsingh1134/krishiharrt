@@ -18,22 +18,22 @@ router.get('/products',getProducts);
 
 router.get('/products/tag/:tag', async (req, res) => {
     const { tag } = req.params;
-    console.log("Received tag:", tag); // Log the received tag for debugging
+    console.log("Received tag:", tag); 
 
     try {
-        // Fetch products that match the given tag
+        
         const products = await File.find({ tags: tag });
 
-        // Check if products were found
+       
         if (products.length === 0) {
-            // If no products found, send a 404 response with an error message
+           
             return res.status(404).json({ msg: 'No products found for the provided tag.' });
         }
 
-        console.log("Products retrieved:", products); // Log the retrieved products
-        res.json(products); // Respond with the found products
+        console.log("Products retrieved:", products); 
+        res.json(products); 
     } catch (error) {
-        console.error("Error fetching products:", error); // Log any errors for debugging
+        console.error("Error fetching products:", error); 
         res.status(500).json({ error: 'Error retrieving products' });
     }
 });

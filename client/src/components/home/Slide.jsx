@@ -19,11 +19,10 @@ const responsive = {
     }
 };
 
-const Slider = ({ products }) => {
-    // State for the countdown timer
+const Slider = ({ products, title, showDealBanner }) => { 
+    
     const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
 
-    // Calculate the time left for the deal (e.g., 24-hour deal of the day)
     useEffect(() => {
         const countdown = () => {
             const now = new Date().getTime();
@@ -39,48 +38,66 @@ const Slider = ({ products }) => {
 
         const timerId = setInterval(countdown, 1000);
 
-        return () => clearInterval(timerId); // Cleanup the timer on component unmount
+        return () => clearInterval(timerId); 
     }, []);
 
     return (
         <Box>
-            {/* Deal of the Day Banner */}
-            <Box textAlign="center" mb={2}>
-                <Typography variant="h4" fontWeight="bold" color="primary">
-                    Deal of the Day
+            {/* Conditionally render the title */}
+            <Box textAlign="left" mb={2} style={{ marginBottom: "15px", marginTop: "10px" }}> {/* Adjusted margin to move text slightly down */}
+                <Typography 
+                    variant="h4" 
+                    fontWeight="bold" 
+                    color="primary"
+                    style={{ color: 'green', marginTop: '5px' }} // Moved text slightly lower
+                >
+                    {title}
                 </Typography>
-                <Typography variant="h6" color="textSecondary">
-                    Hurry! Offer ends in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                </Typography>
+
+                {showDealBanner && (
+                    <Typography 
+                        variant="h6" 
+                        color="textSecondary"
+                        style={{ color: 'green', marginTop: '5px' }} // Moved countdown text slightly lower
+                    >
+                        Hurry! Offer ends in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+                    </Typography>
+                )}
             </Box>
 
-            {/* Carousel Component */}
-            <Carousel
-                responsive={responsive}
-                swipeable={false}
-                draggable={false}
-                infinite={true}
-                autoPlay={true}
-                autoPlaySpeed={4000}
-                keyBoardControl={true}
-                centerMode={true}
-                pauseOnHover={true}
-            >
-                {products.map(product => (
-                   <Link to={`/product/${product._id}`}>
-                    <Box key={product._id} textAlign="center" p={2}>
-                        <img src={product.imageurl} alt={product.name} width="200" height="150" />
-                        <Typography variant="h6">{product.name}</Typography>
-                        <Typography variant="body1" color="textSecondary">
-                            ${product.price}
-                        </Typography>
-                    </Box>
+            {/* Wrap the carousel inside a div */}
+            <div style={{ padding: "10px", backgroundColor: "#f9f9f9" }}> {/* Example of padding and background */}
+                <Carousel
+                    responsive={responsive}
+                    swipeable={false}
+                    draggable={false}
+                    infinite={true}
+                    autoPlay={true}
+                    autoPlaySpeed={4000}
+                    keyBoardControl={true}
+                    centerMode={true}
+                    pauseOnHover={true}
+                >
+                    {products.map(product => (
+                    <Link to={`/product/${product._id}`} key={product._id}>
+                        <Box textAlign="center" p={2}>
+                            <img src={product.imageurl} alt={product.name} width="200" height="150" />
+                            <Typography variant="h6" style={{ color: 'green' }}>{product.name}</Typography> {/* Text is green */}
+                            <Typography variant="body1" color="textSecondary" style={{ color: 'green' }}> {/* Text is green */}
+                                ${product.price}
+                            </Typography>
+                        </Box>
                     </Link>
-                ))}
-            </Carousel>
+                    ))}
+                </Carousel>
+            </div>
         </Box>
     );
 };
 
 export default Slider;
+
+
+
+
 
