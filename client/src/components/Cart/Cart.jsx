@@ -6,7 +6,7 @@ import {
   decreaseQuantity,
   clearCart,
 } from '../../redux/Cartslice';
-import Buy from './Buy';  // Import the Buy component
+import Buy from './Buy';  // Import the Buy c
 
 const Cart = () => {
   const dispatch = useDispatch();
