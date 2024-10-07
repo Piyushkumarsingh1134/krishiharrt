@@ -11,7 +11,8 @@ import Footer from './components/Footer/Footer'
 import Seed from './components/Headerlink/seed'
 import Fertilizers from './components/Headerlink/Fertilizer'
 import Buy from './components/Cart/Buy'
-
+import SellerRegistration from './components/Admin/Sellerregistration'
+import Sellerlogin from './components/Admin/Sellerlogin'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,6 +29,8 @@ function App() {
         <Route path="/product/:id" element={<DetailView />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Buy" element={<Buy />} />
+        <Route path="/SellerRegistration" element={<SellerRegistration/>}/>
+        <Route path="/Sellerlogin" element={<Sellerlogin/>}/>
         </Routes>
      </BrowserRouter>
   )

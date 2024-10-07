@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { styled } from '@mui/system';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import LoginDialog from '../login/logindialog';
 
 const Wrapper = styled(Box)({
@@ -63,8 +64,9 @@ const CustomButton = () => {
                     </Button>
                 </Box>
             )}
-            
-            <Typography>Become a farmer Dealer</Typography>
+            <Link to="/SellerRegistration">
+            <Typography  >Become a farmer Dealer</Typography>
+            </Link>
             <Typography>More</Typography>
             <Box display="flex" alignItems="center" gap="4px">
                 <ShoppingCartIcon />
