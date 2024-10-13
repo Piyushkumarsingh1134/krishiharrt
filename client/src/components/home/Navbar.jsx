@@ -24,7 +24,7 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            <Link to={navData[3].link}>
+            <Link to='/NearbySellers'>
                 <div className="flex flex-col items-center p-2">
                     <img src={navData[3].url} alt={navData[3].text} className="w-12 h-12 mb-1" />
                     <p className="text-sm text-gray-800">{navData[3].text}</p>

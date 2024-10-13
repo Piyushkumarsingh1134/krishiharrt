@@ -19,9 +19,10 @@ async function uploadFileToCloudinary(file, folder) {
 
 const imageupload = async (req, res) => {
     try {
+        
         const { name, tags, description, price} = req.body;
         console.log(name, tags, description,price);
-
+        const sellerId = req.sellerId;
 
         console.log('yaha error a rahi hai');
         const file = req.files.imagefile;
@@ -45,6 +46,8 @@ const filedata = await File.create({
     description,
     price,
     imageurl: response.secure_url,
+    Sellerid: sellerId
+
 });
 
         // Success response

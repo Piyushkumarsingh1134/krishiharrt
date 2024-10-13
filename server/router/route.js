@@ -4,10 +4,14 @@ import { imageupload,getProducts,getproductbyid } from '../controller/productcon
 import { getproductbytags } from '../controller/productcontroller.js';
 import File from '../models/file.js';
 import { adminLogin,registerAdmin } from '../controller/Admincontroller.js';
-import Seller from '../models/Sellerschema.js'; 
+ 
 import { registerSeller } from '../controller/Seller.js';
+import { loginSeller } from '../controller/Seller.js';
 import { isAdmin } from '../Middleware/Adminmiddleware.js';
+import { isSeller } from '../Middleware/Sellermiddleware.js';
 import { authenticateUser } from '../Middleware/Authenticateuser.js';
+import {getProductUploadBySeller } from '../controller/Seller.js'
+import { findNearbySellers } from '../controller/Seller.js';
 const router = express.Router();
 
 // User routes
@@ -20,8 +24,14 @@ router.post('/registerAdmin',registerAdmin );
 
 router.post('/registerSeller',registerSeller);
 
+router.post('/loginSeller', loginSeller );
+router.get('/getProductUploadBySeller/:id', getProductUploadBySeller );
+
+
+router.get('/nearby-sellers', findNearbySellers );
+
 // Image upload route
-router.post('/imageupload', imageupload);
+router.post('/imageupload',authenticateUser,isSeller, imageupload);
 router.get('/products/:id',getproductbyid);
 
 router.get('/products',getProducts);

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-const { Schema, model } = mongoose;  // Extracting Schema and model from mongoose
+
+const { Schema, model } = mongoose;  
 
 
 const fileSchema = new mongoose.Schema({
@@ -20,7 +21,14 @@ const fileSchema = new mongoose.Schema({
     },
     price:{
         type:Number,
+    },
+    Sellerid:{
+        type:mongoose.Schema.ObjectId,
+        ref:"Seller",
+        require:"true",
+
     }
+
 });
 
 

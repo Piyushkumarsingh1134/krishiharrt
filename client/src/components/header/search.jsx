@@ -18,7 +18,7 @@ const IconWrapper = styled(Box)({
     color:'green',
     display: 'flex',
     alignItems: 'center',
-    marginRight: '8px'  // Space between icon and input
+    marginRight: '8px'  
 });
 
 const Search = () => {

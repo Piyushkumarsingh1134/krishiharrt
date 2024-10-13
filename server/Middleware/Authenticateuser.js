@@ -7,8 +7,8 @@ import jwt from 'jsonwebtoken';
 const JWT_SECRET = 'your_jwt_secret';
 
 export const authenticateUser = (req, res, next) => {
-    const token = req.headers.authorization?.split(' ')[1]; // Extract token from the header
-    console.log('Extracted Token:', token); // Log the extracted token
+    const token = req.headers.authorization?.split(' ')[1]; 
+    console.log('Extracted Token:', token); 
   
     if (!token) {
       return res.status(401).json({ message: 'No token provided, authorization denied' });
@@ -16,11 +16,11 @@ export const authenticateUser = (req, res, next) => {
   
     try {
       const decoded = jwt.verify(token, JWT_SECRET); 
-      console.log('Decoded Token:', decoded); // Log the decoded token
-      req.user = decoded; // Attach user info to request
-      next(); // Proceed to the next middleware
+      console.log('Decoded Token:', decoded); 
+      req.user = { id: decoded.id, role: decoded.role };
+      next(); 
     } catch (error) {
-      console.error('Token verification error:', error); // Log the error
+      console.error('Token verification error:', error); 
       return res.status(401).json({ message: 'Token is not valid' });
     }
   };

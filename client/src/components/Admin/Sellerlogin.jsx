@@ -11,26 +11,22 @@ const Sellerlogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/sellers/login', {
-        email,
-        password,
-      });
+        const response = await axios.post('http://localhost:3000/loginSeller', 
+          { email, password });
 
-      if (res.status === 200) {
-        // Navigate to seller dashboard or home page
-        navigate('/dashboard'); 
-      }
-    } catch (error) {
-      if (error.response && error.response.data.message) {
-        setError(error.response.data.message);
-      } else {
-        setError('Something went wrong. Please try again.');
-      }
+        if (response.data.success) {
+         
+            localStorage.setItem('token', response.data.token);
+            
+            navigate('/dashboard');
+        }
+    } catch (err) {
+        setError(err.response?.data?.message || 'Error logging in');
     }
-  };
+};
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

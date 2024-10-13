@@ -36,7 +36,7 @@ const CustomButton = () => {
                     sx={{ 
                         backgroundColor: '#006400',
                         '&:hover': {
-                            backgroundColor: '#66CDAA', // Custom hover color
+                            backgroundColor: '#66CDAA', 
                         }
                     }}
                     onClick={openDialog} 
@@ -49,13 +49,13 @@ const CustomButton = () => {
                     <Button 
                         variant="contained" 
                         sx={{ 
-                            backgroundColor: '#B2EBC2', // Initial background color (light green)
+                            backgroundColor: '#B2EBC2', 
                             '&:hover': {
-                                backgroundColor: '#99DFA3', // Custom hover color
-                                boxShadow: 'none', // Remove default shadow on hover
+                                backgroundColor: '#99DFA3', 
+                                boxShadow: 'none', 
                             },
                             '&:focus': {
-                                outline: 'none', // Remove default focus outline
+                                outline: 'none', 
                             }
                         }} 
                         onClick={handleLogout}
