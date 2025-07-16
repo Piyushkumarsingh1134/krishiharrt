@@ -8,7 +8,6 @@ const NearbySellers = () => {
   const [loadingSellers, setLoadingSellers] = useState(false);
   const [error, setError] = useState(null);
 
-  // Fetch User Location
   useEffect(() => {
     if (!navigator.geolocation) {
       setError('Geolocation is not supported by your browser.');
@@ -32,13 +31,12 @@ const NearbySellers = () => {
     );
   }, []);
 
-  // Fetch Nearby Sellers when Location is Available
   useEffect(() => {
     const fetchNearbySellers = async () => {
       if (location.latitude && location.longitude) {
         setLoadingSellers(true);
         try {
-          // Update the URL to match your backend server and endpoint
+      
           const response = await axios.get('http://localhost:3000/nearby-sellers', {
             params: {
               latitude: location.latitude,

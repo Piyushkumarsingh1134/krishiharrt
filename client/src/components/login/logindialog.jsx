@@ -120,10 +120,13 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
 
     const loginUser = async () => {
         let response = await authenticateLogin(login);
+       
         if (!response) {
             showError(true);
         } else {
             showError(false);
+
+            localStorage.setItem("token", response.data.token);
             handleClose();
             setAccount(login.username);
             navigate('/');

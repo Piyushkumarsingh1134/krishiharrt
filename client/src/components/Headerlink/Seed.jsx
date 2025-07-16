@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from './Productcard';
 import { useDispatch } from 'react-redux';
-import { add } from '../../redux/Cartslice'; // Ensure this path is correct based on your project structure
+import { add } from '../../redux/Cartslice'; 
 
 const Seed = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate(); // Initialize navigate
-  const dispatch = useDispatch(); // Initialize dispatch
+  const navigate = useNavigate(); 
+  const dispatch = useDispatch(); 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,8 +19,6 @@ const Seed = () => {
         }
 
         const data = await response.json();
-
-        console.log(data);
 
         if (Array.isArray(data)) {
           setProducts(data);
@@ -35,17 +33,10 @@ const Seed = () => {
     fetchProducts();
   }, []);
 
-  const handleBuyNow = (product) => {
-    dispatch(add(product));
-     navigate('/Buy');
-    console.log(`Buying product: ${product.name}`);
-    // You can implement additional logic for buying the product here
-  };
-
   const handleAddToCart = (product) => {
-    dispatch(add(product)); // Correctly dispatch the add action
-    navigate('/cart'); // Navigate to the /cart route
-    console.log(`Adding to cart: ${product.name}`);
+    dispatch(add(product));
+    navigate('/cart'); 
+    console.log(`Added to cart: ${product.name}`);
   };
 
   return (
@@ -55,18 +46,18 @@ const Seed = () => {
           <ProductCard 
             key={product._id} 
             product={product} 
-            onBuyNow={handleBuyNow} 
-            onAddToCart={() => handleAddToCart(product)} // Pass product to handleAddToCart
+            onAddToCart={() => handleAddToCart(product)} 
           />
         ))
       ) : (
-        <p>No products found for seeds.</p>
+        <p className='text-gray-600'>No seed products found.</p>
       )}
     </div>
   );
 };
 
 export default Seed;
+
 
 
 

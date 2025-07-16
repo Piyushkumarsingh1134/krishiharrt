@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductCard = ({ product, onBuyNow, onAddToCart }) => {
+const ProductCard = ({ product, onAddToCart }) => {
   return (
     <div className='w-[250px] bg-white p-5 rounded-md shadow-lg transition-transform duration-300 hover:scale-105'>
       <img 
@@ -10,27 +10,20 @@ const ProductCard = ({ product, onBuyNow, onAddToCart }) => {
       />
       <h2 className='font-bold text-lg mb-1'>{product.name}</h2>
       <span className='text-green-600 font-semibold mb-2'>₹{product.price}</span>
-      <p className='text-gray-700 text-sm mb-2'>{product.description}</p>
+      <p className='text-gray-700 text-sm mb-3'>{product.description}</p>
       
-      <div className='flex gap-2'>
-        <button 
-          onClick={() => onAddToCart(product)} 
-          className='w-full bg-green-600 text-white font-semibold py-1 rounded-md hover:bg-green-700 transition duration-300'
-        >
-          Add to Cart
-        </button>
-        <button 
-          onClick={() => onBuyNow(product)} 
-          className='w-full bg-green-600 text-white font-semibold py-1 rounded-md hover:bg-green-700 transition duration-300'
-        >
-          Buy Now
-        </button>
-      </div>
+      <button 
+        onClick={() => onAddToCart(product)} 
+        className='w-full bg-green-600 text-white font-semibold py-2 rounded-md hover:bg-green-700 transition duration-300'
+      >
+        Add to Cart
+      </button>
     </div>
   );
 };
 
 export default ProductCard;
+
 
 
 

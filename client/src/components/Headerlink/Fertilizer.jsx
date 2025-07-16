@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import ProductCard from './Productcard';// Ensure the component name matches the exported name
+import { useNavigate } from 'react-router-dom'; 
+import ProductCard from './Productcard';
 
 const Fertilizers = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchProducts = async () => {

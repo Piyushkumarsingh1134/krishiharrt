@@ -2,7 +2,7 @@ import Admin from '../models/Admin.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = 'your_jwt_secret'; // Replace with a secure secret
+const JWT_SECRET = 'your_jwt_secret'; 
 
 export const registerAdmin = async (req, res) => {
   const { email, password } = req.body;
